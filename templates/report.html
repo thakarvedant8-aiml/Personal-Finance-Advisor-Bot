@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<h2>Monthly Financial Report</h2>
+<div class="row g-3">
+<div class="col-md-4"><div class="card"><div class="card-body"><h6>Income</h6><h3>₹{{"%.2f"|format(total_income)}}</h3></div></div></div>
+<div class="col-md-4"><div class="card"><div class="card-body"><h6>Expenses</h6><h3>₹{{"%.2f"|format(total_expense)}}</h3></div></div></div>
+<div class="col-md-4"><div class="card"><div class="card-body"><h6>Net Savings</h6><h3>₹{{"%.2f"|format(savings)}}</h3></div></div></div>
+</div>
+<h4 class="mt-4">Expense Details</h4>
+<table class="table table-striped"><tr><th>Date</th><th>Category</th><th>Description</th><th>Amount</th></tr>
+{% for x in expenses %}<tr><td>{{x.date}}</td><td>{{x.category}}</td><td>{{x.description}}</td><td>₹{{"%.2f"|format(x.amount)}}</td></tr>{% endfor %}
+</table>
+{% endblock %}
